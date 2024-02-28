@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>EduGreen</title>
+
+
+ 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+
+
+
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+
+<style>
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(10, 40px); /* Adjust based on your grid size */
+  grid-gap: 5px; /* Adjust the gap between grid items */
+  background-color: #92b68f;
+  border: 3px solid #4d7924;
+  width: fit-content;
+
+
+flex-wrap: wrap;
+
+background-color: #92b68f;
+margin-left: 50px;
+margin-top: 20px;
+border: 3px solid #4d7924;
+margin-bottom: 10px;
+
+}
+.grid div {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-family: "Space Mono", monospace;
+}
+
+.valid, .saw{
+display: flex;
+justify-content: center;
+align-items: center; 
+width: 40px;
+height: 40px;
+border: 5px solid;
+border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+box-sizing: border-box;
+}
+
+.checked{
+width: 40px;
+height: 40px;
+border: 2px solid #777571;
+box-sizing: border-box;
+background-color: #7b9e78 ;
+}
+
+.one{
+color: #010101;
+}
+
+.two{
+color: #1937ad;
+}
+
+.three{
+color: #b14c46;
+}
+
+.four{
+color: #28500b;
+}
+
+
+
+</style>
+</head>
+
+<body>
+  <div class="top_container sub_pages">
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              EduGreen
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" datascroll href="index.html"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="learn.html"> Learn </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="calculate.html"> Footprints </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="games.html"> Games </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="gov.html"> Awareness </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="contact.html">Contact Us</a>
+                </li>
+
+              </ul>
+             
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+  <!-- end header section -->
+
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container">
+      <h2 class="main-heading "><center>
+        TreeSweeper
+      </h2>
+      <p class="text-center">
+        A new version of minesweeper. Save the trees from the cruel axe!
+        
+      <div class="about_img-box ">
+        <div class ="grid-container">
+          <div class ="grid"></div></div>
+          <div> Number of axes: <span id ="flags-left"></span></div>
+          <br>
+          <br>
+          <div id = "result"></div>
+        </p></center>
+      
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const grid = document.querySelector('.grid');
+  const flagsLeft = document.querySelector('#flags-left');
+  const result = document.querySelector('#result');
+  const width = 10;
+  let SawAmt = 15;
+  let squares = [];
+  let isGameOver = false;
+
+  function createboard() {
+      flagsLeft.innerHTML = SawAmt;
+
+      // Getting shuffled game array with random saws
+      const sawArray = Array(SawAmt).fill('saw');
+      const emptyArray = Array(width * width - SawAmt).fill('valid');
+      const gameArray = emptyArray.concat(sawArray);
+      const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
+
+      for (let i = 0; i < width * width; i++) {
+          const square = document.createElement('div');
+          square.id = i;
+          square.classList.add(shuffledArray[i]);
+          grid.appendChild(square);
+          squares.push(square);
+
+          // Normal Click
+          square.addEventListener('click', function() {
+              click(square);
+          });
+      }
+
+      for (let i = 0; i < squares.length; i++) {
+          let total = 0;
+          const isLeftEdge = (i % width === 0);
+          const isRightEdge = (i % width === width - 1);
+
+          if (squares[i].classList.contains('valid')) {
+              if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains('saw')) total++;
+              if (i > 9 && !isRightEdge && squares[i + 1 - width].classList.contains('saw')) total++;
+              if (i > 10 && squares[i - width].classList.contains('saw')) total++;
+              if (i > 11 && !isLeftEdge && squares[i - width - 1].classList.contains('saw')) total++;
+              if (i < 98 && !isRightEdge && squares[i + 1].classList.contains('saw')) total++;
+              if (i < 90 && !isLeftEdge && squares[i - 1 + width].classList.contains('saw')) total++;
+              if (i < 88 && !isRightEdge && squares[i + 1 + width].classList.contains('saw')) total++;
+              if (i < 89 && squares[i + width].classList.contains('saw')) total++;
+              squares[i].setAttribute('data', total);
+          }
+      }
+  }
+
+  function click(square) {
+      if (isGameOver || square.classList.contains('checked') || square.classList.contains('flag')) return;
+
+      if (square.classList.contains('saw')) {
+          endGame();
+      } else {
+          let total = square.getAttribute('data');
+          if (total != 0) {
+              square.classList.add('checked');
+              if (total == 1) square.classList.add('one');
+              if (total == 2) square.classList.add('two');
+              if (total == 3) square.classList.add('three');
+              if (total == 4) square.classList.add('four');
+              square.innerHTML = total;
+              return;
+          }
+          checkSquare(square);
+      }
+      square.classList.add('checked');
+  }
+
+  function endGame() {
+      result.innerHTML = 'You axed the trees!';
+      
+      isGameOver = true;
+
+      // Reveal all saws
+      squares.forEach(square => {
+          if (square.classList.contains('saw')) {
+              square.innerHTML = '🪓';
+              square.classList.add('checked');
+          }
+      });
+  }
+
+  function checkSquare(square) {
+      const currentId = parseInt(square.id); // Defined currentId based on square's ID
+      const isLeftEdge = (currentId % width === 0);
+      const isRightEdge = (currentId % width === width - 1);
+
+      setTimeout(function() {
+          if (currentId > 0 && !isLeftEdge) {
+              const newId = squares[parseInt(currentId) - 1].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId > 9 && !isRightEdge) {
+              const newId = squares[parseInt(currentId) + 1 - width].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId > 10) {
+              const newId = squares[parseInt(currentId) - width].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId > 11 && !isLeftEdge) {
+              const newId = squares[parseInt(currentId) - 1 - width].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId < 98 && !isRightEdge) {
+              const newId = squares[parseInt(currentId) + 1].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId < 90 && !isLeftEdge) {
+              const newId = squares[parseInt(currentId) - 1 + width].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId < 88 && !isRightEdge) {
+              const newId = squares[parseInt(currentId) + width + 1].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+          if (currentId < 89) {
+              const newId = squares[parseInt(currentId) + width].id;
+              const newSquare = document.getElementById(newId);
+              click(newSquare);
+          }
+      });
+  }
+
+  createboard();
+});</script>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+
+
+
+
+        <a href="games.html" class="call_to-btn  ">
+          <span>
+            Back to Games
+          </span>
+          <img src="images/right-arrow.png" alt="">
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; All Rights Reserved By
+      <a href="https://html.design/">Dimitri and Suryansh</a>
+    </p>
+  </section>
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- progreesbar script -->
+
+  </script>
+
+</body>
+
+</html>

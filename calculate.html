@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Adward</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+
+
+
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+  <style>
+    .calculator-container {
+        background-color: #F4F4F4;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 0 auto;
+        max-width: 200px; 
+    }
+
+    .calculator-wrapper {
+            max-width: 700px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+    h1 {
+        color: #F76B8A;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    button {
+        background-color: #F9C74F;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin: 20px auto;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #F9844A;
+    }
+
+    select {
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    div[id^="question-"] {
+        background-color: #D4EDDA;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .header_section, .navbar {
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    z-index: 10000; 
+}
+
+</style>
+</head>
+
+<body>
+  <div class="top_container sub_pages">
+
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              EduGreen
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" datascroll href="index.html"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="learn.html"> Learn </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="calculate.html"> Footprints </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="games.html"> Games </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="gov.html"> Awareness </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="contact.html">Contact Us</a>
+                </li>
+
+              </ul>
+             
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+
+  <section class="about_section layout_padding" style="margin-top: 0%; padding-top: 0%;">
+    <div class="container" >
+      <h1 class="main-heading ">
+        My Carbon Foot Print Calculator
+      </h1>
+      <p class="text-center">
+        A carbon footprint calculator is like a special tool that helps you measure how much your actions affect the Earth. Imagine it's like a game where you put in things you do, like how you travel or what you eat, and it shows you how much pollution that creates. It's important because it helps us understand how our choices impact the planet. By using this calculator, we can learn how to make changes, like using less electricity or walking more, to reduce our carbon footprint and keep the Earth healthy for everyone. So, it's like a little helper that shows us how to be kinder to our planet!
+      </p>
+     
+      <div class="calculator-wrapper">
+        <div id="question-container">
+        </div>
+        <button id="calculate-btn" onclick="calculateFootprint()">Calculate</button>
+        <div id="result-container" class="hidden" style="padding: 20px;"></div>
+            <h2>Your Carbon Footprint</h2>
+            <p id="result"></p>
+        
+      </div></div>
+    <script>
+      const questions = [
+          {
+              question: "How many hours do you watch TV or use the computer each day?",
+              options: [1, 2, 3, 4, "More than 4"],
+              carbonValues: [0.1, 0.2, 0.3, 0.4, 0.5] // Simplified values
+          },
+          {
+              question: "How do you usually go to school?",
+              options: ["Walk", "Bicycle", "Car", "Bus"],
+              carbonValues: [0, 0, 0.3, 0.1]
+          },
+          {
+              question: "How often do you eat meat?",
+              options: ["Every day", "A few times a week", "Once a week", "Rarely"],
+              carbonValues: [0.5, 0.3, 0.2, 0.1]
+          },
+          {
+              question: "How many new toys do you get each month?",
+              options: ["None", "1-2", "3-5", "More than 5"],
+              carbonValues: [0, 0.2, 0.4, 0.6]
+          },
+          {
+              question: "Do you turn off lights when you leave a room?",
+              options: ["Always", "Sometimes", "Rarely", "Never"],
+              carbonValues: [0, 0.1, 0.2, 0.3]
+          },
+          {
+              question: "How much water do you use for bathing?",
+              options: ["Short showers", "Long showers", "Baths", "I don't know"],
+              carbonValues: [0.1, 0.2, 0.3, 0.2]
+          },
+          {
+              question: "Do you recycle?",
+              options: ["Yes, always", "Sometimes", "Rarely", "No"],
+              carbonValues: [0, 0.1, 0.2, 0.3]
+          },
+          {
+              question: "How many hours do you spend playing outside each day?",
+              options: ["Less than 1", "1-2", "2-3", "More than 3"],
+              carbonValues: [0.3, 0.2, 0.1, 0]
+          },
+          {
+              question: "How often do you use electronic devices each day?",
+              options: ["Less than 1 hour", "1-3 hours", "3-5 hours", "More than 5 hours"],
+              carbonValues: [0.1, 0.2, 0.3, 0.4]
+          },
+          {
+              question: "Do you use reusable bags and containers?",
+              options: ["Always", "Sometimes", "Rarely", "Never"],
+              carbonValues: [0, 0.1, 0.2, 0.3]
+          }
+      ];
+
+      function displayQuestions() {
+          const container = document.getElementById("question-container");
+          questions.forEach((question, index) => {
+              const questionElement = document.createElement("div");
+              questionElement.setAttribute("id", "question-" + index);
+              questionElement.innerHTML = `
+                  <p>${question.question}</p>
+                  <select>
+                      ${question.options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                  </select>
+              `;
+              container.appendChild(questionElement);
+          });
+      }
+
+      function calculateFootprint() {
+  let totalCarbon = 0;
+  questions.forEach((question, index) => {
+      const selectElement = document.querySelector(`#question-${index} select`);
+      let answer = selectElement.value;
+      let answerIndex = question.options.indexOf(answer);
+
+      if (isNaN(answer)) {
+          totalCarbon += question.carbonValues[answerIndex];
+      } else {
+          answer = parseFloat(answer);
+          totalCarbon += answer;
+      }
+  });
+  const resultText = `Your daily carbon footprint is approximately ${totalCarbon.toFixed(2)}kg CO2.`;
+  let remark = "";
+
+  if(totalCarbon < 2.5) {
+      remark = "Excellent - Your daily activities are very eco-friendly!";
+  } else if(totalCarbon >=  2.5 && totalCarbon < 3.5) {
+      remark = "Good - You're making great choices for the environment!";
+  } else if(totalCarbon >= 3.5 && totalCarbon < 4.5) {
+      remark = "Work in Progress - You're on the right path, but there's room for improvement.";
+  } else {
+      remark = "Needs Improvement - Consider changing some daily habits to reduce your carbon footprint.";
+  }
+
+  document.getElementById("result").innerText = resultText + " " + remark;
+  document.getElementById("result-container").classList.remove("hidden");
+
+}
+
+      displayQuestions();
+  </script>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2019 All Rights Reserved By
+      <a href="https://html.design/">Dimitri and Suryansh</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- progreesbar script -->
+
+  </script>
+
+</body>
+
+</html>

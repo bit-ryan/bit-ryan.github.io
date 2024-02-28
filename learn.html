@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>learn</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>/* Typography */
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      color: #333;
+      margin-top: 0;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    .section {
+      padding: 30px 0;
+      background-color: #fff;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;    }
+    
+    .illustration {
+      max-width: 45%; /* Dimi fix widths */
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out; 
+    }
+    
+    .illustration:hover {
+      transform: scale(1.03); 
+    }
+    
+    /* change the styles if you want */
+    .activity {
+      background-color: #e8f5e9;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      position: relative; 
+    }
+    
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .section, .activity {
+      animation: fadeInUp 0.8s ease-out both;
+    }
+    
+   
+    .btn {
+      background: #81c784;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer; /* Indicate it's clickable */
+      transition: background 0.3s, transform 0.2s;
+    }
+    
+    .btn:hover {
+      background: #66bb6a;
+      transform: translateY(-2px); /* Slight lift effect */
+    }
+    
+    .footer_section {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+    
+    .footer_section a {
+      color: #81c784;
+    }
+    
+    
+    @media (max-width: 768px) {
+      .illustration {
+        max-width: 100%;
+      }
+    
+      .activity, .section {
+        padding: 15px;
+      }
+    }
+    /*gameeeeees*/
+    .item, .bin {
+    border: 2px solid #000;
+    padding: 10px;
+    margin: 10px;
+    cursor: move;
+}
+
+.item {
+    background-color: lightblue;
+    display: inline-block;
+}
+
+.bin {
+    background-color: lightgrey;
+    min-height: 50px;
+}
+
+.correct {
+    background-color: lightgreen;
+}
+
+.incorrect {
+    background-color: lightcoral;
+}
+#quiz {
+    width: 90%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto; 
+    margin-right: auto;
+.question {
+    margin-bottom: 1rem;
+    padding: 20px;
+}
+
+.question p {
+    margin: 0;
+    font-weight: bold;
+    padding: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    padding: 10px;
+}
+
+label {
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+#submit {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#submit:hover, #submit:focus {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #4de190;
+    display: none;
+}
+
+
+
+    #quiz {
+        margin: 20px;
+        box-shadow: none;
+    }
+}
+#quiz {
+    text-align: left; 
+}
+
+.question, .question p {
+    text-align: left;
+    display: block; 
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+    </style>
+
+
+
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+
+
+</head>
+
+<body>
+  <div class="top_container sub_pages" >
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              EduGreen
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" datascroll href="index.html"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="learn.html"> Learn </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="calculate.html"> Footprints </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="games.html"> Games </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="gov.html"> Awareness </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="contact.html">Contact Us</a>
+                </li>
+
+              </ul>
+             
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+  <center>
+  <section class="about_section layout_padding" style="margin-top: 0%; padding-top: 0%; padding: 10px; width:85%;">
+    <div class="container">
+      <h1 class="main-heading "><div class="header">
+        Let's Learn About Eco-Friendly Habits!
+      </h1>
+      <p class="text-center">
+        <div class="section">
+          <h2>Why Should We Care About the Environment?</h2>
+          <p>Understanding why the environment is important helps us make better choices every day. Let's explore how we can help our planet!</p>
+         
+          <img src="images/enviro.jpg" alt="Illustration about the environment" class="illustration">
+      </div>
+      </p>
+      <div class="section">
+        <h2>Fun Activities to Learn and Help</h2>
+        <div class="activity">
+            <h4>Activity 1: Plant a Tree</h4>
+            <p>Planting trees is fun and helps the planet. Trees give us oxygen, shade, and homes for animals.</p>
+           
+            <img src="images/plant.jpg" alt="Illustration about planting a tree" class="illustration">
+        </div>
+        <div class="activity">
+          <h4>Activity 2: Are you Environment Friendly?</h4>
+          <p>Take the quiz to find out how environment friendly your actions are.</p>
+          <div id="quiz">
+            <div class="question" data-correct="1">
+                <p>1. How often do you use public transportation?</p>
+                <input type="radio" name="q1" value="2">Daily<br>
+                <input type="radio" name="q1" value="1">Occasionally<br>
+                <input type="radio" name="q1" value="0">Never
+            </div>
+            <div class="question" data-correct="1">
+                <p>2. Do you use reusable bags for shopping?</p>
+                <input type="radio" name="q2" value="1">Yes<br>
+                <input type="radio" name="q2" value="0">No
+            </div>
+            <div class="question" data-correct="1">
+                <p>3. How often do you recycle?</p>
+                <input type="radio" name="q3" value="2">Always<br>
+                <input type="radio" name="q3" value="1">Sometimes<br>
+                <input type="radio" name="q3" value="0">Never
+            </div>
+            <div class="question" data-correct="1">
+              <p>4. Do you reduce water usage by fixing leaks and taking shorter showers?</p>
+              <input type="radio" name="q4" value="1">Yes<br>
+              <input type="radio" name="q4" value="0">No
+          </div>
+          <div class="question" data-correct="1">
+              <p>5. How often do you eat plant-based meals?</p>
+              <input type="radio" name="q5" value="2">Mostly or always<br>
+              <input type="radio" name="q5" value="1">Sometimes<br>
+              <input type="radio" name="q5" value="0">Rarely or never
+          </div>
+          <div class="question" data-correct="1">
+              <p>6. Do you actively educate others about environmental issues and sustainability?</p>
+              <input type="radio" name="q6" value="1">Yes<br>
+              <input type="radio" name="q6" value="0">No
+          </div>
+          <div class="question" data-correct="1">
+              <p>7. Have you participated in or contributed to environmental cleanup activities or tree planting initiatives?</p>
+              <input type="radio" name="q7" value="2">Yes, regularly<br>
+              <input type="radio" name="q7" value="1">Yes, once or a few times<br>
+              <input type="radio" name="q7" value="0">No
+          </div>
+  
+            <button id="submit">Submit</button>
+            <div id="result"></div>
+
+
+        </div><script>
+        document.getElementById('submit').addEventListener('click', function() {
+          let score = 0;
+          const questions = document.querySelectorAll('.question');
+      
+          questions.forEach(function(question) {
+              const selectedOption = question.querySelector('input[type="radio"]:checked');
+              if (selectedOption) {
+                  score += parseInt(selectedOption.value);
+              }
+          });
+      
+          const result = document.getElementById('result');
+          const maxScore = questions.length * 2; //marks 2, change if u wanna
+          const scorePercentage = (score / maxScore) * 100;
+      
+          if (scorePercentage >= 75) {
+              result.textContent = `Your score is ${score}. You are extremely environmentally friendly!`;
+          } else if (scorePercentage >= 50) {
+              result.textContent = `Your score is ${score}. You are very environmentally friendly!`;
+          } else if (scorePercentage >= 25) {
+              result.textContent = `Your score is ${score}. You are somewhat environmentally friendly.`;
+          } else {
+              result.textContent = `Your score is ${score}. There's significant room for improvement in your environmental habits.`;
+          }
+          result.style.display = 'block';
+      });</script>
+      
+          <div class="section"></div>
+            <h2>Everyday Eco-Friendly Habits</h2>
+            <p>Small changes in our daily life can make a big difference. Here are some easy habits to start with:</p>
+            <ul>
+                <li>Turning off the lights when you leave a room.</li>
+                <li>Using reusable bags and bottles.</li>
+                <li>Walking or biking instead of using a car.</li>
+            </ul>
+           
+            <img src="images/enviro1.webp" alt="Illustration about eco-friendly habits" class="illustration">
+        </div>
+        <div class="section">
+          <h2>Save Water to Help the Earth</h2>
+          <p>Water is precious! Learn how saving water can make a big difference for our planet.</p>
+          
+          <img src="images/water.png" alt="Illustration about saving water" class="illustration">
+          <div class="activity">
+              <h4>Activity 3: Waste Management</h4>
+              <p>Ever wondered where waste should go? Let's find out and see how you can identify the correct waste disposal bins!</p>
+              <h2>Drag the items into the correct bin!</h2>
+              <p> Please do it in order from the beginning</p>
+              <div id="items">
+                  <div class="item" draggable="true" data-type="recycle">Paper</div>
+                  <div class="item" draggable="true" data-type="compost">Banana Peel</div>
+                  <div class="item" draggable="true" data-type="recycle">Cardboard</div>
+                  <div class="item" draggable="true" data-type="trash">Plastic Bag</div>
+                  <div class="item" draggable="true" data-type="recycle">Glass Bottle</div>
+                  <div class="item" draggable="true" data-type="recycle">Aluminum Can</div>
+                  <div class="item" draggable="true" data-type="compost">Apple Core</div>
+                  <div class="item" draggable="true" data-type="trash">Styrofoam</div>
+                  <div class="item" draggable="true" data-type="recycle">Plastic Bottle</div>
+                  <div class="item" draggable="true" data-type="compost">Coffee Grounds</div>
+                  <div class="item" draggable="true" data-type="compost">Eggshells</div>
+                  <div class="item" draggable="true" data-type="recycle">Magazine</div>
+                  <div class="item" draggable="true" data-type="trash">Cigarette Butts</div>
+                  <div class="item" draggable="true" data-type="trash">Chip Bag</div>
+                  <div class="item" draggable="true" data-type="compost">Tea Bags</div>
+              
+              </div>
+          
+              <h3>Bins</h3>
+              <div id="bins">
+                  <div class="bin" data-type="recycle">Recycle Bin</div>
+                  <div class="bin" data-type="compost">Compost Bin</div>
+                  <div class="bin" data-type="trash">Trash Bin</div>
+              </div>
+              <script>document.querySelectorAll('.item').forEach(item => {
+                item.addEventListener('dragstart', dragStart);
+            });
+            
+            document.querySelectorAll('.bin').forEach(bin => {
+                bin.addEventListener('dragover', dragOver);
+                bin.addEventListener('drop', drop);
+            });
+            
+            function dragStart(e) {
+                e.dataTransfer.setData('type', e.target.getAttribute('data-type'));
+            }
+            
+            function dragOver(e) {
+                e.preventDefault();
+            }
+            
+            function drop(e) {
+                const itemType = e.dataTransfer.getData('type');
+                const binType = e.target.getAttribute('data-type');
+                e.preventDefault();
+                if (itemType === binType) {
+                    e.target.appendChild(document.querySelector(`.item[data-type="${itemType}"]`));
+                    
+                    e.target.lastChild.classList.add('correct');
+                    
+                } else {
+                    
+                    document.querySelector(`.item[data-type="${itemType}"]`).classList.add('incorrect');
+                }
+            }
+            </script>
+          </div>
+      </div>
+
+
+
+
+        </div>
+  </section>
+
+
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; All Rights Reserved By
+      <a href="https://github.com/diceantagonist">Dimitri and Suryansh</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- progreesbar script -->
+
+  </script>
+
+</body>
+
+</html>

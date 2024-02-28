@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>EduGreen</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- progress barstle -->
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+
+
+
+  <link rel="stylesheet" href="css/css-circular-prog-bar.css">
+
+<style>
+    .top_container {
+        margin-bottom: 0; 
+        padding-bottom: 0; 
+    }
+
+    .header_section, .top_container {
+    margin-bottom: 0 !important; 
+    padding-bottom: 0 !important; 
+}
+
+.about_section {
+    padding-top: 0 !important; 
+}
+
+.spacer {
+    margin: 0;
+    padding: 0;
+}  
+        #gameBoard {
+            margin: auto;
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px; 
+            border: 2px solid #ccc; 
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+        
+        #environment, #resources, #actions, #score {
+            text-align: left;
+            margin: 20px 0;
+        }
+    
+        #environment p, #resources p, #score p, #funFacts p {
+            margin: 10px 0;
+            line-height: 1.5; 
+        }
+    
+        #actions button {
+            background-color: #4caf50; 
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+        }
+        
+        #actions button:hover {
+            background-color: #66bb6a; 
+            transform: scale(1.05); 
+        }
+    
+        #resources p span, #score p span, #environment p span {
+            font-weight: bold;
+        }
+    
+        #resources, #actions, #score {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+    
+        #score {
+            border-bottom: none;
+        }
+    
+        #funFacts p {
+            font-style: italic;
+            color: #388e3c; /
+        }
+    </style>
+
+</head>
+
+<body>
+  <div class="top_container sub_pages">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              EduGreen
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" datascroll href="index.html"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="learn.html"> Learn </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" datascroll href="calculate.html"> Footprints </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="games.html"> Games </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="gov.html"> Awareness </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" datascroll href="contact.html">Contact Us</a>
+                </li>
+
+              </ul>
+             
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <h2 class="main-heading ">
+        EcoQuest
+      </h2>
+      <p class="text-center">
+        Make the best sustainability plan by increasing your score. Good Luck!
+      </p>
+     
+      <div class="d-flex justify-content-center mt-5">
+        <div id="gameBoard">
+          <div id="environment">
+              <p>Trees Planted: <span id="treesPlanted">0</span> <img src="tree.png" id="treeImage" style="width:50px;height:50px;visibility:hidden;"></p>
+              <p>Solar Panels Installed: <span id="solarPanelsInstalled">0</span> <img src="solar.png" id="solarPanelImage" style="width:50px;height:50px;visibility:hidden;"></p>
+              <p>Waste Recycled: <span id="wasteRecycled">0</span> <img src="recycle.png" id="recyclingImage" style="width:50px;height:50px;visibility:hidden;"> ♻️</p>
+              
+          </div>
+  
+          
+          <div id="resources">
+            <p>Money: <span id="money">200</span></p>
+              <p>Water: <span id="waterLevel">100</span></p>
+              <p>Energy: <span id="energyLevel">100</span></p>
+              <p>Waste: <span id="wasteLevel">200</span> ♻️</p> 
+          </div>
+          <div id="actions">
+              <button onclick="plantTree()">Plant a Tree</button>
+              <button onclick="installSolarPanels()">Install Solar Panels</button>
+              <button onclick="startRecycling()">Start Recycling</button>
+              <button onclick="resetGame()">Try Again</button>
+  
+          </div>
+          <div id="score">
+              <p>Turns Left: <span id="turnsLeft">20</span></p>
+              <p>Sustainability Score: <span id="sustainabilityScore">0</span></p>
+          </div>
+          <div id="funFacts">
+              <p id="funFactDisplay">Fun Fact: </p>
+          </div>
+      </div>
+        
+      </div>
+    </div>
+  </section>
+  <script>
+    let waterLevel = 100;
+    let energyLevel = 100;
+    let wasteLevel = 200;
+    let sustainabilityScore = 0;
+    let money = 200;
+    let turnsLeft = 20;
+    
+    let funFacts = {
+        tree: "Planting trees can reduce carbon dioxide in the atmosphere, helping to combat climate change.",
+        solar: "Solar panels can significantly reduce electricity bills and do not produce air pollutants or greenhouse gases.",
+        recycling: "Recycling can save energy, reduce pollution, and conserve natural resources like timber and water."
+    };
+    
+    function updateUI() {
+        document.getElementById('waterLevel').textContent = waterLevel;
+        document.getElementById('energyLevel').textContent = energyLevel;
+        document.getElementById('wasteLevel').textContent = wasteLevel; 
+        document.getElementById('sustainabilityScore').textContent = sustainabilityScore;
+        document.getElementById('turnsLeft').textContent = turnsLeft;
+        document.getElementById('money').textContent = money;
+    }
+    
+    function displayFunFact(factType) {
+        let funFactDisplay = document.getElementById('funFactDisplay');
+        funFactDisplay.textContent = "Fun Fact: " + funFacts[factType];
+    }
+    
+    function duplicateImage(imageSrc, parentElementId) {
+        let newImage = document.createElement('img');
+        newImage.setAttribute('src', imageSrc);
+        newImage.style.width = '50px';
+        newImage.style.height = '50px';
+        document.getElementById(parentElementId).appendChild(newImage);
+    }
+    
+    function plantTree() {
+        if (turnsLeft > 0 && money >= 10) { 
+            waterLevel -= 5;
+            sustainabilityScore += 10;
+            turnsLeft -= 1;
+            money -= 10; // Deduct cost
+             duplicateImage('tree.png', 'environment'); 
+            updateUI();
+            displayFunFact('tree');
+        }
+    }
+    
+    function installSolarPanels() {
+        if (turnsLeft > 0 && money >= 20) { 
+            energyLevel += 10;
+            sustainabilityScore += 15;
+            turnsLeft -= 1;
+            money -= 20; 
+             duplicateImage('solar.png', 'environment'); 
+            updateUI();
+            displayFunFact('solar');
+        }
+    }
+    
+    function startRecycling() {
+        if (turnsLeft > 0 && wasteLevel > 0 && money >= 5) { 
+            wasteLevel = Math.max(0, wasteLevel - 10);
+            sustainabilityScore += 5;
+            turnsLeft -= 1;
+            money -= 5; 
+            duplicateImage('recycle.png', 'environment'); 
+            updateUI();
+            displayFunFact('recycling');
+        }
+    }
+    
+    function resetGame() {
+        waterLevel = 100;
+        energyLevel = 100;
+        wasteLevel = 200;
+        sustainabilityScore = 0;
+        turnsLeft = 20;
+        money = 200;
+        
+        document.getElementById('treesPlanted').textContent = '0';
+        document.getElementById('solarPanelsInstalled').textContent = '0';
+        document.getElementById('wasteRecycled').textContent = '0';
+        
+        let environmentDiv = document.getElementById('environment');
+        while (environmentDiv.children.length > 3) { 
+            environmentDiv.removeChild(environmentDiv.lastChild);
+        }
+        updateUI(); 
+    }
+    
+    updateUI();
+    </script>
+    <div class="d-flex justify-content-center mt-5">
+
+
+
+
+      <a href="games.html" class="call_to-btn  ">
+        <span>
+          Back to Games
+        </span>
+        <img src="images/right-arrow.png" alt="">
+      </a>
+    </div><br><br>
+
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; All Rights Reserved By
+      <a href="https://github.com/diceantagonist">Dimitri and Suryansh</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- progreesbar script -->
+
+  </script>
+
+</body>
+
+</html>
