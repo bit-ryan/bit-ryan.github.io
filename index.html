@@ -345,7 +345,7 @@
               <div class="contact-form">
                 <h4>Volunteer Now!</h4>
 
-<form onsubmit="return myFunction();">
+<form name ="submit-to-google-sheet" onsubmit="return myFunction();">
   <label for="fname">First name:</label><br>
 <input type="text" id="fname" name="fname" placeholder="Type First Name"><br>
 <label for="lname">Last name:</label><br>
@@ -381,6 +381,17 @@ document.getElementById("result").innerHTML = "Sorry! You cannot volunteer as yo
 }
 return false;
 }
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxiZd1dQjws5k2RIFmEBGsXC1wL3uQFUw8IsT9L9R2OqNYtP5X0AYI_2fpTPFPAKgbc/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+
 </script>
               </div>
             </div>
